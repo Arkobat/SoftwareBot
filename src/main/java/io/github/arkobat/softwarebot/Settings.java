@@ -39,4 +39,5 @@ public class Settings {
     public final static String YELLOW_COLOR_EMOTE_NAME = "\uD83D\uDC9B";
 
     public final static long VELKOMST_CHANNEL_ID = 616309775738601482L;
+    public final static long BOT_SPAM_CHANNEL_ID = 616768640251068479L;
 }

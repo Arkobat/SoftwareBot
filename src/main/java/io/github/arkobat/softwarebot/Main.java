@@ -1,5 +1,6 @@
 package io.github.arkobat.softwarebot;
 
+import io.github.arkobat.softwarebot.casino.ScrambleSystem;
 import io.github.arkobat.softwarebot.listeners.*;
 import io.github.arkobat.softwarebot.utils.Random;
 import net.dv8tion.jda.core.JDABuilder;
