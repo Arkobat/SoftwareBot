@@ -3,6 +3,7 @@ package io.github.arkobat.softwarebot;
 public class Settings {
 
     public final static long SOFTWARE_GUILD_ID = 616308317136093184L;
+    public final static long ARKOBAT_ID = 275370480687513600L;
 
     public final static long CHOOSE_ROLE_CHANNEL_ID = 616309751239933994L;
     public final static String CHOOSE_SOFTWARE_MESSAGE_ID = "616310114353283182";
@@ -40,4 +41,5 @@ public class Settings {
 
     public final static long VELKOMST_CHANNEL_ID = 616309775738601482L;
     public final static long BOT_SPAM_CHANNEL_ID = 616768640251068479L;
+    public final static long STUDIEGRUPPER_CATEGORY_ID = 621083601622007838L;
 }
