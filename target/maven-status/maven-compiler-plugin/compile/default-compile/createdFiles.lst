@@ -1,0 +1,15 @@
+io\github\arkobat\softwarebot\utils\TimeConverter.class
+io\github\arkobat\softwarebot\Command.class
+io\github\arkobat\softwarebot\Main.class
+io\github\arkobat\softwarebot\Config$Path.class
+io\github\arkobat\softwarebot\utils\Log.class
+io\github\arkobat\softwarebot\listeners\OnJoin.class
+io\github\arkobat\softwarebot\utils\Random.class
+io\github\arkobat\softwarebot\listeners\OnLeave.class
+io\github\arkobat\softwarebot\Config.class
+io\github\arkobat\softwarebot\Settings.class
+io\github\arkobat\softwarebot\casino\ScrambleSystem.class
+io\github\arkobat\softwarebot\listeners\AutoRole.class
+io\github\arkobat\softwarebot\casino\ScramblePack.class
+io\github\arkobat\softwarebot\listeners\OnMessage.class
+io\github\arkobat\softwarebot\listeners\OnReady.class
