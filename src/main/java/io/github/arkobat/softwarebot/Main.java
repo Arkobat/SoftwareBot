@@ -13,7 +13,7 @@ public class Main {
 
     private Main() {
         for (int i = 0; i < 25; i++) {
-            System.out.println("");
+            System.out.println();
         }
         //Log.out("Connecting to server...");
         try {
@@ -28,7 +28,8 @@ public class Main {
                             new OnJoin(),
                             new OnLeave(),
                             new OnMessage(),
-                            new OnReady()
+                            new OnReady(),
+                            new FreeVoiceChannels()
                     )
                     .build().awaitReady();
         } catch (LoginException | InterruptedException e) {

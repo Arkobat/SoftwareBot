@@ -42,4 +42,6 @@ public class Settings {
     public final static long VELKOMST_CHANNEL_ID = 616309775738601482L;
     public final static long BOT_SPAM_CHANNEL_ID = 616768640251068479L;
     public final static long STUDIEGRUPPER_CATEGORY_ID = 621083601622007838L;
+    public final static long SNAK_CATEGORY_ID = 616607324907241472L;
+    public final static long HYGGE1_CHANNEL_ID = 616607870020223029L;
 }
