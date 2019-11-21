@@ -45,15 +45,27 @@ public class FreeVoiceChannels extends ListenerAdapter {
     }
 
     public void onGuildVoiceJoin(GuildVoiceJoinEvent e) {
-        onJoin(e.getChannelJoined());
+        try {
+            onJoin(e.getChannelJoined());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 
     public void onGuildVoiceLeave(GuildVoiceLeaveEvent e) {
-        onLeave(e.getChannelLeft());
+        try {
+            onLeave(e.getChannelLeft());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 
     public void onGuildVoiceMove(GuildVoiceMoveEvent e) {
-        onLeave(e.getChannelLeft());
-        onJoin(e.getChannelJoined());
+        try {
+            onLeave(e.getChannelLeft());
+            onJoin(e.getChannelJoined());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 }

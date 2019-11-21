@@ -40,12 +40,20 @@ public class StudiegruppeCmd extends Command {
             }
         });
 
-        TextChannel groupChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("gruppe-" + group)).findFirst().get();
-        TextChannel teamChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("hold-" + getTeam(group))).findFirst().get();
-        groupChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
-        teamChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
+        TextChannel groupChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("gruppe-" + group)).findFirst().orElse(null);
+        TextChannel teamChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("hold-" + getTeam(group))).findFirst().orElse(null);
+        if (teamChannel == null) {
+            cat.createTextChannel("hold-" + getTeam(group)).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
+        } else {
+            teamChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
+        }
+        if (groupChannel == null) {
+            cat.createTextChannel("gruppe-" + group).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
+        } else {
+            groupChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
+        }
+        e.getChannel().sendMessage("Du er nu blevet tilføjet til team og gruppe kanalen. Find dem i bunden af Discorden").queue();
 
-        e.getChannel().sendMessage("Du er nu blevet tilføjet til " + groupChannel.getAsMention() + " og " + teamChannel.getAsMention()).queue();
     }
 
     private int getTeam(int group) {
