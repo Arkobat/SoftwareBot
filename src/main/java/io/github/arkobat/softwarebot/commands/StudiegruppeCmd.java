@@ -18,11 +18,19 @@ public class StudiegruppeCmd extends Command {
     @Override
     public void execute(MessageReceivedEvent e) {
         String[] args = Utils.getArgs(e.getMessage());
-        if (args.length != 2) {
-            e.getChannel().sendMessage("Forkert syntax. Brug `!gruppe <nr>`").queue();
+        if (args.length != 3) {
+            e.getChannel().sendMessage("Forkert syntax. Brug `!gruppe <linje> <nr>`").queue();
             return;
         }
-        Integer group = NumberUtils.stringToInt(args[1]);
+
+        String education = args[1];
+
+        if (!education.equalsIgnoreCase("SE") && !education.equalsIgnoreCase("ST")) {
+            e.getChannel().sendMessage("throw new IllegalArgumentException(\"Ukendt linje. Vælg mellem SE og ST!\");").queue();
+            return;
+        }
+
+        Integer group = NumberUtils.stringToInt(args[2]);
         if (group == null || group < 1 || group > 30) {
             e.getChannel().sendMessage("throw new IllegalArgumentException(\"Dit gruppenummer skal være et tal mellem `1` og `30`!\");").queue();
             return;
@@ -40,15 +48,15 @@ public class StudiegruppeCmd extends Command {
             }
         });
 
-        TextChannel groupChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("gruppe-" + group)).findFirst().orElse(null);
-        TextChannel teamChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("hold-" + getTeam(group))).findFirst().orElse(null);
+        TextChannel groupChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("gruppe-" + education + "-" + group)).findFirst().orElse(null);
+        TextChannel teamChannel = cat.getTextChannels().stream().filter(c -> c.getName().equalsIgnoreCase("hold-" + education + "-" + getTeam(group))).findFirst().orElse(null);
         if (teamChannel == null) {
-            cat.createTextChannel("hold-" + getTeam(group)).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
+            cat.createTextChannel("hold-" + education + "-" + getTeam(group)).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
         } else {
             teamChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
         }
         if (groupChannel == null) {
-            cat.createTextChannel("gruppe-" + group).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
+            cat.createTextChannel("gruppe-" + education + "-" + group).queue(c -> c.putPermissionOverride(e.getMember()).setAllow(1024L).queue());
         } else {
             groupChannel.putPermissionOverride(e.getMember()).setAllow(1024L).queue();
         }
